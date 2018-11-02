@@ -1,6 +1,6 @@
 """A web application for tracking projects, students, and student grades."""
 
-from flask import Flask, request, render_template, flash
+from flask import Flask, request, render_template, flash, redirect
 
 import hackbright
 
@@ -33,13 +33,10 @@ def get_studnt_form():
 def student_add():
     """ Adds a student."""
 
-    github = request.args.get('github')
-    first_name = request.args.get('first_name')
-    last_name = request.args.get('last_name')
 
-   # github = request.form.get(['github'])
-   # first_name = request.form.get(['first_name'])
-    #last_name = request.form.get(['last_name'])
+    github = request.form.get('github')
+    first_name = request.form.get('first_name')
+    last_name = request.form.get('last_name')
 
     hackbright.make_new_student(first_name, last_name, github)
     flash("Added student to form")
@@ -51,6 +48,7 @@ def student_add():
 
     # return html
     return render_template("add_student_dataset.html")
+    #return redirect("/student")
 
 if __name__ == "__main__":
     hackbright.connect_to_db(app)
