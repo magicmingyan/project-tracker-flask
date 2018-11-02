@@ -34,7 +34,7 @@ def get_student_by_github(github):
 
     row = db_cursor.fetchone()
 
-    print("Student: {} {}\nGitHub account: {}").format(row[0], row[1], row[2])
+    print("Student: {} {}\nGitHub account: {}".format(row[0], row[1], row[2]))
 
     return row
 
